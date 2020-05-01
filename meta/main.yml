@@ -16,8 +16,4 @@ galaxy_info:
         versions:
             - stretch
             - buster
-      - name: CentOS
-        versions:
-            - 8
-            - 7
 dependencies: []
