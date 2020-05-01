@@ -4,4 +4,20 @@ galaxy_info:
   license: Apache-2.0
   min_ansible_version: 2.9
   galaxy_tags: ["libvirt", "kvm"]
+  platforms:
+      - name: Ubuntu
+        versions:
+            - focal
+            - eoan
+            - disco
+            - cosmic
+            - bionic
+      - name: Debian
+        versions:
+            - stretch
+            - buster
+      - name: CentOS
+        versions:
+            - 8
+            - 7
 dependencies: []
