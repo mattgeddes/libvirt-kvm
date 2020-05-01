@@ -1,2 +1,36 @@
 ---
-# tasks file for libvirt-kvm
+- name: Hypervisor deployment on CentOS
+  yum:
+      state: present
+      name:
+          - libvirt
+          - libvirt-python
+          - python-lxml
+          - qemu-system-x86
+          - OVMF
+          - seabios
+          - qemu-kvm
+          - qemu-kvm-tools
+  when: ansible_distribution == "CentOS"
+- name: Hypervisor deployment on Ubuntu/Debian
+  apt:
+      state: present
+      name:
+          - libvirt-clients
+          - libvirt-daemon
+          - libvirt-daemon-system
+          - libguestfs-tools
+          - python-libvirt
+          - bridge-utils
+          - qemu-kvm
+          - qemu-system-x86
+          - qemu-utils
+          - ovmf
+          - python-lxml
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+- name: Hypervisor start
+  systemd:
+      name: libvirtd
+      state: started
+      enabled: yes
+# TODO: Add deployment of network templates- 
