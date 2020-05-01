@@ -33,4 +33,17 @@
       name: libvirtd
       state: started
       enabled: yes
-# TODO: Add deployment of network templates- 
+- name: libvirt networks definition
+  virt_net:
+      command: define
+      name: "{{ item.name }}"
+      xml: '{{ lookup( "template", "net-{{ item.type }}.j2 ) }}'
+  with_items:
+      - "{{ libvirt_networks }}"
+- name: libvirt networks running state
+  virt_net:
+      name: "{{ item.name }}"
+      autostart: yes
+      state: active
+  with_items:
+      - "{{ libvirt_networks }}"
