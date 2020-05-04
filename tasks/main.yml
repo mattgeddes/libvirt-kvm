@@ -1,4 +1,6 @@
 ---
+- set_fact:
+    libvirt_networks: "{{ my_networks }}"
 - name: Hypervisor deployment on CentOS
   yum:
       state: present

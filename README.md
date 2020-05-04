@@ -10,7 +10,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: mattgeddes.libvirt_kvm, libvirt_networks: "{{ networks }}" }
+         - { role: mattgeddes.libvirt_kvm, my_networks: "{{ networks }}" }
 
 License
 -------
