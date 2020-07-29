@@ -1,0 +1,12 @@
+<network>
+  <name>{{ item.name }}</name>
+  <bridge name='{{ item.name }}' stp='on' delay='0'/>
+  <mac address='{{ item.ipaddr | ipmac( hypervisor_id ) }}'/>
+  <domain name='{{ item.domain }}'/>
+  <!-- Can also be mode="route" with an interface to restrict it to -->
+  <forward mode="nat"/>
+{% if item.ipaddr is defined %}
+  <ip address='{{ item.ipaddr }}' netmask='{{ item.netmask }}'>
+  </ip>
+{% endif %}
+</network>
